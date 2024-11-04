@@ -31,6 +31,9 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('rutaAdmiDestinos') ? 'text-warning' : '' }}" href="{{ route('rutaAdmiDestinos') }}">Destinos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('rutaGeneracionExportacionReportes') ? 'text-warning' : '' }}" href="{{ route('rutaGeneracionExportacionReportes') }}">Reportes</a>
+                    </li>
                 </ul>
             </div>
         </div>
