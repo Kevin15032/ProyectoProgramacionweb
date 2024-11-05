@@ -136,4 +136,29 @@ public function enviarHotel(Request $peticion)
     return redirect()->route('rutaAdmiHoteles');
 }
 
+public function guardarTarifaVuelo(Request $peticion)
+{
+    $validacion = $peticion->validate([
+        'vuelo' => 'required|string',
+        'precioVuelo' => 'required|numeric|min:0',
+        'promocionVuelo' => 'required|numeric|min:0'
+    ]);
+
+    session()->flash('exito', 'Las tarifas del vuelo han sido guardadas exitosamente.');
+    return redirect()->route('rutaGestionTarifa');
+}
+
+
+public function guardarTarifaHotel(Request $peticion)
+{
+    $validacion = $peticion->validate([
+        'hotel' => 'required|string',
+        'precioHotel' => 'required|numeric|min:0',
+        'promocionHotel' => 'required|numeric|min:0'
+    ]);
+
+
+    session()->flash('exito', 'Las tarifas del hotel han sido guardadas exitosamente.');
+    return redirect()->route('rutaGestionTarifas');
+}
 }
