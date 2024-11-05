@@ -92,6 +92,10 @@ public function admidestino()
 {
     return view('admidestino');
 }
+public function tarifahotel()
+{
+    return view('tarifahotel');
+}
 public function AgregarVuelo( Request $peticion)
 {
     $validacion = $peticion->validate([
@@ -139,26 +143,19 @@ public function enviarHotel(Request $peticion)
 public function guardarTarifaVuelo(Request $peticion)
 {
     $validacion = $peticion->validate([
-        'vuelo' => 'required|string',
-        'precioVuelo' => 'required|numeric|min:0',
-        'promocionVuelo' => 'required|numeric|min:0'
+        'precioHotel' => 'required|numeric|min:0',
+        'promocionHotel' => 'nullable|numeric|min:0'
     ]);
 
-    session()->flash('exito', 'Las tarifas del vuelo han sido guardadas exitosamente.');
-    return redirect()->route('rutaGestionTarifa');
+    
 }
 
 
 public function guardarTarifaHotel(Request $peticion)
 {
     $validacion = $peticion->validate([
-        'hotel' => 'required|string',
-        'precioHotel' => 'required|numeric|min:0',
-        'promocionHotel' => 'required|numeric|min:0'
-    ]);
-
-
-    session()->flash('exito', 'Las tarifas del hotel han sido guardadas exitosamente.');
-    return redirect()->route('rutaGestionTarifas');
+        'precioVuelo' => 'required|numeric|min:0',
+        'promocionVuelo' => 'required|numeric|min:0'
+    ]); 
 }
 }

@@ -35,7 +35,10 @@
                         <a class="nav-link {{ request()->routeIs('rutaGeneracionExportacionReportes') ? 'text-warning' : '' }}" href="{{ route('rutaGeneracionExportacionReportes') }}">Reportes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('rutaGestionTarifa') ? 'text-warning' : '' }}" href="{{ route('rutaGestionTarifa') }}">Tarifas</a>
+                        <a class="nav-link {{ request()->routeIs('rutaGestionTarifa') ? 'text-warning' : '' }}" href="{{ route('rutaGestionTarifa') }}">Tarifa vuelos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('rutaTarifaHotel') ? 'text-warning' : '' }}" href="{{ route('rutaTarifaHotel') }}">Tarifa Hotel</a>
                     </li>
                 </ul>
             </div>
