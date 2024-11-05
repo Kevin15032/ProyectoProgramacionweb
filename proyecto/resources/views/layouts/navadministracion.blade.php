@@ -37,6 +37,7 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('rutaCorreosAutomaticos') ? 'text-warning' : '' }}" href="{{ route('rutaCorreosAutomaticos') }}">Correos Automáticos</a> 
                     </li> 
+                  
                 </ul>
             </div>
         </div>
