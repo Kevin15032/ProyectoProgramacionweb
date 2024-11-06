@@ -13,7 +13,7 @@
     
 </head>
 <body class="bg-light">
-    <!-- Navbar -->
+  
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow mb-4">
         <div class="container">
             <a class="navbar-brand font-weight-bold text-dark" href="{{ route('rutaInicio') }}">Panel de Formularios</a>
@@ -27,6 +27,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('rutaBusquedaVuelos') ? 'text-warning' : '' }}" href="{{ route('rutaBusquedaVuelos') }}">Busqueda de vuelos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('rutaResultadoHotel') ? 'text-warning' : '' }}" href="{{ route('rutaResultadoHotel') }}">Busqueda de hoteles</a>
                     </li>
                 </ul>
             </div>
