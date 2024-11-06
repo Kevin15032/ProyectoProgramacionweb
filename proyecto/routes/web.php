@@ -18,6 +18,7 @@ Route::get('/registro-cliente', [ControladorVista::class, 'registroCliente'])->n
 Route::get('/resultado-hotel', [ControladorVista::class, 'resultadoHotel'])->name('rutaResultadoHotel');
 Route::get('/resultados-vuelos', [ControladorVista::class, 'resultadosVuelos'])->name('rutaResultadosVuelos');
 Route::get('/resumen-compra', [ControladorVista::class, 'resumenCompra'])->name('rutaResumenCompra');
+Route::get('/tarifa-hotel',  [ControladorVista::class, 'tarifahotel'])->name('rutaTarifaHotel');
 
 // rutas de administración de vuelos, hoteles y destino 
 Route::get('/admivuelos', [ControladorVista::class, 'admivuelo'])->name('rutaAdmiVuelos');
