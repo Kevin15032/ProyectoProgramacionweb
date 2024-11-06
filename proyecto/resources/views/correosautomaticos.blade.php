@@ -1,8 +1,19 @@
 @extends('layouts.navadministracion')
 @section('contenido')
 
-  <div class="container my-5">
-    <h1 class="text-center mb-5">Configuración de Correos Automáticos</h1>
+<div class="container mt-5">
+  @if(session('exito'))
+    <script> 
+      Swal.fire({
+        title: "Respuesta del servidor",
+        text: "{{ session('exito') }}",
+        icon: "success"
+      });
+    </script>
+  @endif
+  
+  <form action="{{route('guardarConfiguraciones')}}" method="POST">
+    @csrf
 
     <!-- Tabs Navigation -->
     <ul class="nav nav-tabs" id="emailConfigTabs" role="tablist">
@@ -30,12 +41,14 @@
           </div>
           <div class="card-body">
             <div class="mb-3">
-              <label for="registration-subject" class="form-label">Asunto del Correo</label>
-              <input type="text" class="form-control" id="registration-subject" placeholder="Ingrese el asunto del correo">
+              <label for="asunto_registro" class="form-label">Asunto del Correo</label>
+              <input type="text" class="form-control" name="asunto_registro" value="{{ old('asunto_registro') }}" placeholder="Ingrese el asunto del correo">
+              <small class="text-danger fst-italic">{{$errors->first('asunto_registro')}}</small>
             </div>
             <div class="mb-3">
-              <label for="registration-content" class="form-label">Contenido del Correo</label>
-              <textarea class="form-control" id="registration-content" rows="5" placeholder="Ingrese el contenido del correo"></textarea>
+              <label for="contenido_registro" class="form-label">Contenido del Correo</label>
+              <textarea class="form-control" name="contenido_registro" rows="5" placeholder="Ingrese el contenido del correo">{{ old('contenido_registro') }}</textarea>
+              <small class="text-danger fst-italic">{{$errors->first('contenido_registro')}}</small>
             </div>
           </div>
         </div>
@@ -49,12 +62,14 @@
           </div>
           <div class="card-body">
             <div class="mb-3">
-              <label for="flightReminder-subject" class="form-label">Asunto del Correo</label>
-              <input type="text" class="form-control" id="flightReminder-subject" placeholder="Ingrese el asunto del correo">
+              <label for="asunto_vuelo" class="form-label">Asunto del Correo</label>
+              <input type="text" class="form-control" name="asunto_vuelo" value="{{ old('asunto_vuelo') }}" placeholder="Ingrese el asunto del correo">
+              <small class="text-danger fst-italic">{{$errors->first('asunto_vuelo')}}</small>
             </div>
             <div class="mb-3">
-              <label for="flightReminder-content" class="form-label">Contenido del Correo</label>
-              <textarea class="form-control" id="flightReminder-content" rows="5" placeholder="Ingrese el contenido del correo"></textarea>
+              <label for="contenido_vuelo" class="form-label">Contenido del Correo</label>
+              <textarea class="form-control" name="contenido_vuelo" rows="5" placeholder="Ingrese el contenido del correo">{{ old('contenido_vuelo') }}</textarea>
+              <small class="text-danger fst-italic">{{$errors->first('contenido_vuelo')}}</small>
             </div>
           </div>
         </div>
@@ -68,18 +83,19 @@
           </div>
           <div class="card-body">
             <div class="mb-3">
-              <label for="hotelReminder-subject" class="form-label">Asunto del Correo</label>
-              <input type="text" class="form-control" id="hotelReminder-subject" placeholder="Ingrese el asunto del correo">
+              <label for="asunto_hotel" class="form-label">Asunto del Correo</label>
+              <input type="text" class="form-control" name="asunto_hotel" value="{{ old('asunto_hotel') }}" placeholder="Ingrese el asunto del correo">
+              <small class="text-danger fst-italic">{{$errors->first('asunto_hotel')}}</small>
             </div>
             <div class="mb-3">
-              <label for="hotelReminder-content" class="form-label">Contenido del Correo</label>
-              <textarea class="form-control" id="hotelReminder-content" rows="5" placeholder="Ingrese el contenido del correo"></textarea>
+              <label for="contenido_hotel" class="form-label">Contenido del Correo</label>
+              <textarea class="form-control" name="contenido_hotel" rows="5" placeholder="Ingrese el contenido del correo">{{ old('contenido_hotel') }}</textarea>
+              <small class="text-danger fst-italic">{{$errors->first('contenido_hotel')}}</small>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Important Updates Tab -->
+      
       <div class="tab-pane fade" id="importantUpdates" role="tabpanel" aria-labelledby="importantUpdates-tab">
         <div class="card">
           <div class="card-header">
@@ -87,23 +103,28 @@
           </div>
           <div class="card-body">
             <div class="mb-3">
-              <label for="importantUpdates-subject" class="form-label">Asunto del Correo</label>
-              <input type="text" class="form-control" id="importantUpdates-subject" placeholder="Ingrese el asunto del correo">
+              <label for="asunto_actualizacion" class="form-label">Asunto del Correo</label>
+              <input type="text" class="form-control" name="asunto_actualizacion" value="{{ old('asunto_actualizacion') }}" placeholder="Ingrese el asunto del correo">
+              <small class="text-danger fst-italic">{{$errors->first('asunto_actualizacion')}}</small>
             </div>
             <div class="mb-3">
-              <label for="importantUpdates-content" class="form-label">Contenido del Correo</label>
-              <textarea class="form-control" id="importantUpdates-content" rows="5" placeholder="Ingrese el contenido del correo"></textarea>
+              <label for="contenido_actualizacion" class="form-label">Contenido del Correo</label>
+              <textarea class="form-control" name="contenido_actualizacion" rows="5" placeholder="Ingrese el contenido del correo">{{ old('contenido_actualizacion') }}</textarea>
+              <small class="text-danger fst-italic">{{$errors->first('contenido_actualizacion')}}</small>
             </div>
           </div>
         </div>
       </div>
     </div>
+    </div>
 
     <!-- Save Button -->
     <div class="mt-4 text-center">
-      <button type="button" class="btn btn-primary w-100">
+      <button type="submit" class="btn btn-primary w-100">
         <i class="bi bi-save me-2"></i> Guardar Configuraciones
       </button>
     </div>
-  </div>
+  </form>
+</div>
+
 @endsection

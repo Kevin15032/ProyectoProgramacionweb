@@ -8,7 +8,7 @@
     <h1 class="text-center font-weight-bold mb-5">Carrito de Reservación</h1>
     
     <div class="row">
-      <!-- Card para Vuelos -->
+      
       <div class="col-md-6 mb-4">
         <div class="card">
           <div class="card-header d-flex align-items-center">
@@ -80,8 +80,8 @@
         </p>
       </div>
       <div class="card-footer d-flex justify-content-between">
-        <button class="btn btn-outline-primary">
-          <i class="fas fa-edit mr-2"></i>Modificar Reservación
+        <button class="btn btn-outline-primary" onclick="window.location.href='{{ route('rutaCancelarReserva') }}'">
+          <i class="fas fa-edit me-2"></i>Cancelar reservación
         </button>
         <button class="btn btn-primary">
           <i class="fas fa-credit-card mr-2"></i>Proceder al Pago

@@ -5,7 +5,7 @@
 <div class="container my-5 p-4 bg-white shadow rounded">
   <h1 class="text-center mb-4">Buscador de Hoteles</h1>
 
-  <form action="/buscarHoteles" method="POST">
+  <form action="" method="">
     <div class="row g-3">
       <div class="col-md-6">
         <label for="destino" class="form-label">Destino</label>
@@ -116,7 +116,7 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary w-100">Buscar Hoteles</button>
+    <button onclick="window.location.href='{{route('rutaResultadoHotel')}}'" class="btn btn-primary w-100" type="button">Buscar Hoteles</button>
   </form>
 </div>
 

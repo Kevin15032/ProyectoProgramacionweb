@@ -36,6 +36,7 @@
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-primary w-100" disabled>Añadir al carrito</button>
+                        <a href="{{ route('rutaDetallesHotel') }}" class="btn btn-link text-primary w-100 mt-2">Detalles</a>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\validarCorreos;  
 
 class ControladorVista extends Controller
 {
@@ -39,6 +40,23 @@ public function carritoReservacion()
 public function correosAutomaticos()
 {
     return view('correosautomaticos');
+} 
+public function store(validarCorreos $request) {
+    $titulo = $request->input('titulo');
+    
+    // Lógica para manejar los datos del formulario
+    if ($request->has('asunto_registro')) {
+        $mensaje = 'Configuración de confirmación de registro guardada correctamente para "' . $titulo . '"';
+    } elseif ($request->has('asunto_vuelo')) {
+        $mensaje = 'Recordatorio de vuelo guardado correctamente para "' . $titulo . '"';
+    } elseif ($request->has('asunto_hotel')) {
+        $mensaje = 'Recordatorio de hotel guardado correctamente para "' . $titulo . '"';
+    } else {
+        $mensaje = 'Configuración actualizada correctamente para "' . $titulo . '"';
+    }
+
+    session()->flash('exito', $mensaje);
+    return redirect()->route('guardarConfiguraciones');
 }
 
 public function generacionExportacionReportes()
@@ -96,6 +114,10 @@ public function tarifahotel()
 {
     return view('tarifahotel');
 }
+public function detallesHotel()
+{
+    return view('detalleshotel');
+}
 public function AgregarVuelo( Request $peticion)
 {
     $validacion = $peticion->validate([
@@ -144,10 +166,13 @@ public function guardarTarifaVuelo(Request $peticion)
 {
     $validacion = $peticion->validate([
         'precioHotel' => 'required|numeric|min:0',
-        'promocionHotel' => 'nullable|numeric|min:0'
+        'promocionHotel' => 'nullable|numeric|min:0',
+        'vuelo' => 'required'
     ]);
 
-    
+    $vuelo = $peticion->input('vuelo');
+    session()->flash('exito','Se guardó el hotel: '.  $vuelo);
+    return redirect()->route('rutaGestionTarifa');
 }
 
 
@@ -157,5 +182,20 @@ public function guardarTarifaHotel(Request $peticion)
         'precioVuelo' => 'required|numeric|min:0',
         'promocionVuelo' => 'required|numeric|min:0'
     ]); 
+}
+
+public function registro(Request $peticion)
+{
+   $registro = $peticion->validate([
+        'nombre' => 'required|string|max:255',
+        'apellido' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'telefono' => 'required|numeric',
+        'password' => 'required|string|min:8',
+    ]);
+
+    $usuario = $peticion->input('nombre');
+    session()->flash('exito', 'Registro exitoso!'.$usuario);
+    return redirect()->route('rutaBusquedaVuelos');
 }
 }
