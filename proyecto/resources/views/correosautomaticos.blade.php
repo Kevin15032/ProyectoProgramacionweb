@@ -1,4 +1,4 @@
-@extends('layouts.navformularios')
+@extends('layouts.navadministracion')
 @section('contenido')
 
   <div class="container my-5">
