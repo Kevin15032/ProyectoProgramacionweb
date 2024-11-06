@@ -41,22 +41,22 @@ public function correosAutomaticos()
 {
     return view('correosautomaticos');
 } 
-public function store(validarCorreos $request) {
-    $titulo = $request->input('titulo');
-    
-    // Lógica para manejar los datos del formulario
-    if ($request->has('asunto_registro')) {
-        $mensaje = 'Configuración de confirmación de registro guardada correctamente para "' . $titulo . '"';
-    } elseif ($request->has('asunto_vuelo')) {
-        $mensaje = 'Recordatorio de vuelo guardado correctamente para "' . $titulo . '"';
-    } elseif ($request->has('asunto_hotel')) {
-        $mensaje = 'Recordatorio de hotel guardado correctamente para "' . $titulo . '"';
-    } else {
-        $mensaje = 'Configuración actualizada correctamente para "' . $titulo . '"';
-    }
+public function correo( Request $peticion) {
+    $validacion = $peticion->validate([
+        'asunto_registro' => 'required',
+        'contenido_registro' => 'required',
+        'asunto_vuelo' => 'required',
+        'contenido_vuelo' => 'required',
+        'asunto_hotel' => 'required',
+        'contenido_hotel' => 'required',
+        'asunto_actualizacion' => 'required',
+        'contenido_actualizacion' => 'required'
+    ]);
 
-    session()->flash('exito', $mensaje);
-    return redirect()->route('guardarConfiguraciones');
+    
+    session()->flash('exito', 'Se guardo ');
+
+    return redirect()->route('rutaCorreosAutomaticos');
 }
 
 public function generacionExportacionReportes()
@@ -166,8 +166,8 @@ public function guardarTarifaVuelo(Request $peticion)
 {
     $validacion = $peticion->validate([
         'vuelo' => 'required',
-        'precioHotel' => 'required|numeric|min:0',
-        'promocionHotel' => 'nullable|numeric|min:0'
+        'precioVuelo' => 'required|numeric|min:0',
+        'promocionVuelo' => 'required|numeric|min:0'
         
     ]);
 
@@ -180,10 +180,10 @@ public function guardarTarifaHotel(Request $peticion)
 {
     $validacion = $peticion->validate([
         'hotel'=> 'required',
-        'precioVuelo' => 'required|numeric|min:0',
-        'promocionVuelo' => 'required|numeric|min:0'
+        'precioHotel' => 'required|numeric|min:0',
+        'promocionHotel' => 'required|numeric|min:0'
     ]); 
-    
+
     session()->flash('exito', 'Registro exitoso!');
     return redirect()->route('rutaTarifaHotel');
 }

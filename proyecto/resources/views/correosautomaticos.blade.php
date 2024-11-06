@@ -12,28 +12,10 @@
     </script>
   @endif
   
-  <form action="{{route('guardarConfiguraciones')}}" method="POST">
+  <form action="/correro" method="POST">
     @csrf
-
-    <!-- Tabs Navigation -->
-    <ul class="nav nav-tabs" id="emailConfigTabs" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="registration-tab" data-bs-toggle="tab" data-bs-target="#registration" type="button" role="tab" aria-controls="registration" aria-selected="true">Registro</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="flightReminder-tab" data-bs-toggle="tab" data-bs-target="#flightReminder" type="button" role="tab" aria-controls="flightReminder" aria-selected="false">Vuelo</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="hotelReminder-tab" data-bs-toggle="tab" data-bs-target="#hotelReminder" type="button" role="tab" aria-controls="hotelReminder" aria-selected="false">Hotel</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="importantUpdates-tab" data-bs-toggle="tab" data-bs-target="#importantUpdates" type="button" role="tab" aria-controls="importantUpdates" aria-selected="false">Actualizaciones</button>
-      </li>
-    </ul>
-
-    <!-- Tabs Content -->
     <div class="tab-content mt-4" id="emailConfigTabsContent">
-      <!-- Registration Tab -->
+      
       <div class="tab-pane fade show active" id="registration" role="tabpanel" aria-labelledby="registration-tab">
         <div class="card">
           <div class="card-header">
@@ -54,7 +36,7 @@
         </div>
       </div>
 
-      <!-- Flight Reminder Tab -->
+      
       <div class="tab-pane fade" id="flightReminder" role="tabpanel" aria-labelledby="flightReminder-tab">
         <div class="card">
           <div class="card-header">
@@ -75,7 +57,7 @@
         </div>
       </div>
 
-      <!-- Hotel Reminder Tab -->
+      
       <div class="tab-pane fade" id="hotelReminder" role="tabpanel" aria-labelledby="hotelReminder-tab">
         <div class="card">
           <div class="card-header">
@@ -118,7 +100,7 @@
     </div>
     </div>
 
-    <!-- Save Button -->
+    
     <div class="mt-4 text-center">
       <button type="submit" class="btn btn-primary w-100">
         <i class="bi bi-save me-2"></i> Guardar Configuraciones
