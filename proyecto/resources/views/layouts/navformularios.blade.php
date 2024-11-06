@@ -13,20 +13,24 @@
     
 </head>
 <body class="bg-light">
-    <!-- Navbar -->
+  
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow mb-4">
         <div class="container">
-            <a class="navbar-brand font-weight-bold text-dark" href="{{ route('rutaInicio') }}">Panel de Formularios</a>
+            <a class="navbar-brand font-weight-bold text-dark" href="{{ route('rutaInicio') }}">Inicio</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('rutaCarritoReservacion') ? 'text-warning' : '' }}" href="{{ route('rutaCarritoReservacion') }}">Carrito de Reservación</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('rutaBusquedaVuelos') ? 'text-warning' : '' }}" href="{{ route('rutaBusquedaVuelos') }}">Busqueda de vuelos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('rutaBusquedaHotel') ? 'text-warning' : '' }}" href="{{ route('rutaBusquedaHotel') }}">Busqueda de hoteles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('rutaCarritoReservacion') ? 'text-warning' : '' }}" href="{{ route('rutaCarritoReservacion') }}">Carrito de Reservación</a>
                     </li>
                 </ul>
             </div>

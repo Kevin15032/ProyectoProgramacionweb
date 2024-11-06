@@ -14,21 +14,23 @@
     @endif
   
    
-        <div class="tab-content" id="tarifasTabContent">
+        <div class="tab-content" id="tarifaVuelos">
           
           <!-- Formulario Vuelos -->
           <div class="tab-pane fade show active" id="vuelos" role="tabpanel" aria-labelledby="vuelos-tab">
-            <form action="{{ route('guardarTarifaVuelo') }}" method="POST" class="row g-3">
+            <form action="{{ route('guardarTarifaHotel') }}" method="POST" class="row g-3">
               @csrf
               <div class="col-12">
                 <label for="vuelo-select" class="form-label">Seleccionar Vuelo</label>
                 <select class="form-select" name="vuelo" id="vuelo-select">
+
                   <option selected>Seleccione un vuelo</option>
                   <option value="MAD-BCN">Madrid - Barcelona</option>
                   <option value="BCN-MAD">Barcelona - Madrid</option>
                   <option value="MAD-PAR">Madrid - París</option>
                   <option value="PAR-MAD">París - Madrid</option>
                 </select>
+                <small class="text-danger fst-italic">{{ $errors->first('vuelo-select') }}</small>
               </div>
               <div class="col-12">
                 <label for="precio-vuelo" class="form-label">Precio Base (€)</label>
@@ -42,39 +44,9 @@
               </div>
               <button type="submit" class="btn btn-primary mt-3">Guardar Tarifas de Vuelo</button>
             </form>
+
+            
           </div>
-  
-          <!-- Formulario Hoteles -->
-          <div class="tab-pane fade" id="hoteles" role="tabpanel" aria-labelledby="hoteles-tab">
-            <form action="{{ route('guardarTarifaHotel') }}" method="POST" class="row g-3">
-              @csrf
-              <div class="col-12">
-                <label for="hotel-select" class="form-label">Seleccionar Hotel</label>
-                <select class="form-select" name="hotel" id="hotel-select">
-                  <option selected>Seleccione un hotel</option>
-                  <option value="MAD-HILTON">Hilton Madrid</option>
-                  <option value="BCN-RITZ">Ritz Barcelona</option>
-                  <option value="PAR-MARRIOTT">Marriott París</option>
-                  <option value="LON-SAVOY">The Savoy Londres</option>
-                </select>
-              </div>
-              <div class="col-12">
-                <label for="precio-hotel" class="form-label">Precio por Noche (€)</label>
-                <input type="number" class="form-control" name="precioHotel" id="precio-hotel" value="{{ old('precioHotel') }}" placeholder="Ingrese el precio por noche">
-                <small class="text-danger fst-italic">{{ $errors->first('precioHotel') }}</small>
-              </div>
-              <div class="col-12">
-                <label for="promocion-hotel" class="form-label">Precio Promocional por Noche (€)</label>
-                <input type="number" class="form-control" name="promocionHotel" id="promocion-hotel" value="{{ old('promocionHotel') }}" placeholder="Ingrese el precio promocional por noche">
-                <small class="text-danger fst-italic">{{ $errors->first('promocionHotel') }}</small>
-              </div>
-              <button type="submit" class="btn btn-primary mt-3">Guardar Tarifas de Hotel</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   
 @endsection

@@ -4,7 +4,7 @@
 
 <div class="container mt-5">
         <h1 class="mb-4">Buscar Vuelos</h1>
-        <form action="/buscarVuelos" method="POST">
+        <form action="" method="">
             @csrf
             <div class="form-row">
                 <div class="col-md-6 mb-3">
@@ -88,7 +88,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary w-100" type="submit">Buscar Vuelos</button>
+            <button onclick="window.location.href='{{route('rutaResultadosVuelos')}}'" class="btn btn-primary w-100" type="submit">Buscar Vuelos</button>
         </form>
     </div>
   @endsection

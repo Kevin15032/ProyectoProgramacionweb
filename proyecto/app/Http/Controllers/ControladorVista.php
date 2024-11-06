@@ -110,6 +110,14 @@ public function admidestino()
 {
     return view('admidestino');
 }
+public function tarifahotel()
+{
+    return view('tarifahotel');
+}
+public function detallesHotel()
+{
+    return view('detalleshotel');
+}
 public function AgregarVuelo( Request $peticion)
 {
     $validacion = $peticion->validate([
@@ -157,12 +165,13 @@ public function enviarHotel(Request $peticion)
 public function guardarTarifaVuelo(Request $peticion)
 {
     $validacion = $peticion->validate([
-        'vuelo' => 'required|string',
-        'precioVuelo' => 'required|numeric|min:0',
-        'promocionVuelo' => 'required|numeric|min:0'
+        'precioHotel' => 'required|numeric|min:0',
+        'promocionHotel' => 'nullable|numeric|min:0',
+        'vuelo' => 'required'
     ]);
 
-    session()->flash('exito', 'Las tarifas del vuelo han sido guardadas exitosamente.');
+    $vuelo = $peticion->input('vuelo');
+    session()->flash('exito','Se guardó el hotel: '.  $vuelo);
     return redirect()->route('rutaGestionTarifa');
 }
 
@@ -170,13 +179,23 @@ public function guardarTarifaVuelo(Request $peticion)
 public function guardarTarifaHotel(Request $peticion)
 {
     $validacion = $peticion->validate([
-        'hotel' => 'required|string',
-        'precioHotel' => 'required|numeric|min:0',
-        'promocionHotel' => 'required|numeric|min:0'
+        'precioVuelo' => 'required|numeric|min:0',
+        'promocionVuelo' => 'required|numeric|min:0'
+    ]); 
+}
+
+public function registro(Request $peticion)
+{
+   $registro = $peticion->validate([
+        'nombre' => 'required|string|max:255',
+        'apellido' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'telefono' => 'required|numeric',
+        'password' => 'required|string|min:8',
     ]);
 
-
-    session()->flash('exito', 'Las tarifas del hotel han sido guardadas exitosamente.');
-    return redirect()->route('rutaGestionTarifas');
+    $usuario = $peticion->input('nombre');
+    session()->flash('exito', 'Registro exitoso!'.$usuario);
+    return redirect()->route('rutaBusquedaVuelos');
 }
 }
