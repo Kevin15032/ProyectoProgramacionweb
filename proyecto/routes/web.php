@@ -32,5 +32,8 @@ Route::post('/procesarVuelo', [ControladorVista::class, 'AgregarVuelo']);
 Route::post('/procesarDestino', [ControladorVista::class, 'AgregarDestino']);
 
 // ruta para tarifa
-Route::post('/procesarTarifavuelo', [ControladorVista::class, 'AgregarguardarTarifaVuelo'])->name('guardarTarifaVuelo');
+Route::post('/ruta/guardar-tarifa', [ControladorVista::class, 'guardarTarifaVuelo']);
 Route::post('/procesarTarifahotel', [ControladorVista::class, 'guardarTarifaHotel'])->name('guardarTarifaHotel');
+
+// registro
+Route::post('/registro', [ControladorVista::class, 'registro']);

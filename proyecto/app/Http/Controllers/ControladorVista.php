@@ -144,10 +144,13 @@ public function guardarTarifaVuelo(Request $peticion)
 {
     $validacion = $peticion->validate([
         'precioHotel' => 'required|numeric|min:0',
-        'promocionHotel' => 'nullable|numeric|min:0'
+        'promocionHotel' => 'nullable|numeric|min:0',
+        'vuelo' => 'required'
     ]);
 
-    
+    $vuelo = $peticion->input('vuelo');
+    session()->flash('exito','Se guardó el hotel: '.  $vuelo);
+    return redirect()->route('rutaGestionTarifa');
 }
 
 
@@ -157,5 +160,20 @@ public function guardarTarifaHotel(Request $peticion)
         'precioVuelo' => 'required|numeric|min:0',
         'promocionVuelo' => 'required|numeric|min:0'
     ]); 
+}
+
+public function registro(Request $peticion)
+{
+   $registro = $peticion->validate([
+        'nombre' => 'required|string|max:255',
+        'apellido' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'telefono' => 'required|numeric',
+        'password' => 'required|string|min:8',
+    ]);
+
+    $usuario = $peticion->input('nombre');
+    session()->flash('exito', 'Registro exitoso!'.$usuario);
+    return redirect()->route('rutaBusquedaHotel');
 }
 }
