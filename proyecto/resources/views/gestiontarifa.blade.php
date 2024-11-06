@@ -18,7 +18,7 @@
           
           <!-- Formulario Vuelos -->
           <div class="tab-pane fade show active" id="vuelos" role="tabpanel" aria-labelledby="vuelos-tab">
-            <form action="{{ route('guardarTarifaHotel') }}" method="POST" class="row g-3">
+            <form action="/rutaguardartarifavuelo" method="POST" class="row g-3">
               @csrf
               <div class="col-12">
                 <label for="vuelo-select" class="form-label">Seleccionar Vuelo</label>
@@ -30,7 +30,7 @@
                   <option value="MAD-PAR">Madrid - París</option>
                   <option value="PAR-MAD">París - Madrid</option>
                 </select>
-                <small class="text-danger fst-italic">{{ $errors->first('vuelo-select') }}</small>
+                <small class="text-danger fst-italic">{{ $errors->first('vuelo') }}</small>
               </div>
               <div class="col-12">
                 <label for="precio-vuelo" class="form-label">Precio Base (€)</label>
@@ -43,9 +43,7 @@
                 <small class="text-danger fst-italic">{{ $errors->first('promocionVuelo') }}</small>
               </div>
               <button type="submit" class="btn btn-primary mt-3">Guardar Tarifas de Vuelo</button>
-            </form>
-
-            
+            </form>   
           </div>
 
   

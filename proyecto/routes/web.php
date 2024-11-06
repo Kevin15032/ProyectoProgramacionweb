@@ -11,6 +11,7 @@ Route::get('/cancelar-reserva', [ControladorVista::class, 'cancelarReserva'])->n
 Route::get('/carrito-reservacion', [ControladorVista::class, 'carritoReservacion'])->name('rutaCarritoReservacion');
 Route::get('/correos-automaticos', [ControladorVista::class, 'correosAutomaticos'])->name('rutaCorreosAutomaticos');
 Route::get('/generacion-exportacion-reportes', [ControladorVista::class, 'generacionExportacionReportes'])->name('rutaGeneracionExportacionReportes');
+
 Route::get('/gestion-tarifa', [ControladorVista::class, 'gestiontarifa'])->name('rutaGestionTarifa');
 Route::get('/politicas-de-cancelacion', [ControladorVista::class, 'politicasDeCancelacion'])->name('rutaPoliticasDeCancelacion');
 Route::get('/recuperacion-contrasena', [ControladorVista::class, 'recuperacionContrasena'])->name('rutaRecuperacionContrasena');
@@ -18,6 +19,7 @@ Route::get('/registro-cliente', [ControladorVista::class, 'registroCliente'])->n
 Route::get('/resultado-hotel', [ControladorVista::class, 'resultadoHotel'])->name('rutaResultadoHotel');
 Route::get('/resultados-vuelos', [ControladorVista::class, 'resultadosVuelos'])->name('rutaResultadosVuelos');
 Route::get('/resumen-compra', [ControladorVista::class, 'resumenCompra'])->name('rutaResumenCompra');
+
 Route::get('/tarifa-hotel',  [ControladorVista::class, 'tarifahotel'])->name('rutaTarifaHotel');
 Route::get('/datalle-hotel',  [ControladorVista::class, 'detallesHotel'])->name('rutaDetallesHotel');
 
@@ -33,7 +35,7 @@ Route::post('/procesarVuelo', [ControladorVista::class, 'AgregarVuelo']);
 Route::post('/procesarDestino', [ControladorVista::class, 'AgregarDestino']);
 
 // ruta para tarifa
-Route::post('/ruta/guardar-tarifa', [ControladorVista::class, 'guardarTarifaVuelo']);
+Route::post('/rutaguardartarifavuelo', [ControladorVista::class, 'guardarTarifaVuelo'])->name('guardarTarifaVuelo');
 Route::post('/procesarTarifahotel', [ControladorVista::class, 'guardarTarifaHotel'])->name('guardarTarifaHotel');
 
 // registro
