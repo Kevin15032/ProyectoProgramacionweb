@@ -33,13 +33,16 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('rutaGeneracionExportacionReportes') ? 'text-warning' : '' }}" href="{{ route('rutaGeneracionExportacionReportes') }}">Reportes</a>
-                    </li>
+                    </li> 
                     <li class="nav-item">
+
                         <a class="nav-link {{ request()->routeIs('rutaGestionTarifa') ? 'text-warning' : '' }}" href="{{ route('rutaGestionTarifa') }}">Tarifa vuelos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('rutaTarifaHotel') ? 'text-warning' : '' }}" href="{{ route('rutaTarifaHotel') }}">Tarifa Hotel</a>
                     </li>
+                        <a class="nav-link {{ request()->routeIs('rutaCorreosAutomaticos') ? 'text-warning' : '' }}" href="{{ route('rutaCorreosAutomaticos') }}">Correos Automáticos</a> 
+                    </li> 
                 </ul>
             </div>
         </div>

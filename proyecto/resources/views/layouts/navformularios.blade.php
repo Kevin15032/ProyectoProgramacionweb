@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/js/app.js'])
-    <title>@yield('titulo','Panel de Administración')</title>
+    <title>@yield('titulo','Panel princiapal')</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 </head>
@@ -24,6 +24,9 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('rutaCarritoReservacion') ? 'text-warning' : '' }}" href="{{ route('rutaCarritoReservacion') }}">Carrito de Reservación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('rutaBusquedaVuelos') ? 'text-warning' : '' }}" href="{{ route('rutaBusquedaVuelos') }}">Busqueda de vuelos</a>
                     </li>
                 </ul>
             </div>
