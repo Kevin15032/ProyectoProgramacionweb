@@ -96,6 +96,10 @@ public function tarifahotel()
 {
     return view('tarifahotel');
 }
+public function detallesHotel()
+{
+    return view('detalleshotel');
+}
 public function AgregarVuelo( Request $peticion)
 {
     $validacion = $peticion->validate([
@@ -174,6 +178,6 @@ public function registro(Request $peticion)
 
     $usuario = $peticion->input('nombre');
     session()->flash('exito', 'Registro exitoso!'.$usuario);
-    return redirect()->route('rutaBusquedaHotel');
+    return redirect()->route('rutaBusquedaVuelos');
 }
 }

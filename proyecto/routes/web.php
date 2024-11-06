@@ -19,6 +19,7 @@ Route::get('/resultado-hotel', [ControladorVista::class, 'resultadoHotel'])->nam
 Route::get('/resultados-vuelos', [ControladorVista::class, 'resultadosVuelos'])->name('rutaResultadosVuelos');
 Route::get('/resumen-compra', [ControladorVista::class, 'resumenCompra'])->name('rutaResumenCompra');
 Route::get('/tarifa-hotel',  [ControladorVista::class, 'tarifahotel'])->name('rutaTarifaHotel');
+Route::get('/datalle-hotel',  [ControladorVista::class, 'detallesHotel'])->name('rutaDetallesHotel');
 
 // rutas de administración de vuelos, hoteles y destino 
 Route::get('/admivuelos', [ControladorVista::class, 'admivuelo'])->name('rutaAdmiVuelos');
