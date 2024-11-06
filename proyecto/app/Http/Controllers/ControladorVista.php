@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\validarCorreos;  
 
 class ControladorVista extends Controller
 {
@@ -39,6 +40,23 @@ public function carritoReservacion()
 public function correosAutomaticos()
 {
     return view('correosautomaticos');
+} 
+public function store(validarCorreos $request) {
+    $titulo = $request->input('titulo');
+    
+    // Lógica para manejar los datos del formulario
+    if ($request->has('asunto_registro')) {
+        $mensaje = 'Configuración de confirmación de registro guardada correctamente para "' . $titulo . '"';
+    } elseif ($request->has('asunto_vuelo')) {
+        $mensaje = 'Recordatorio de vuelo guardado correctamente para "' . $titulo . '"';
+    } elseif ($request->has('asunto_hotel')) {
+        $mensaje = 'Recordatorio de hotel guardado correctamente para "' . $titulo . '"';
+    } else {
+        $mensaje = 'Configuración actualizada correctamente para "' . $titulo . '"';
+    }
+
+    session()->flash('exito', $mensaje);
+    return redirect()->route('guardarConfiguraciones');
 }
 
 public function generacionExportacionReportes()

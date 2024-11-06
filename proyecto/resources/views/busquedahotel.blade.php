@@ -2,7 +2,6 @@
 @section('contenido')
 
 
-
 <div class="container my-5 p-4 bg-white shadow rounded">
   <h1 class="text-center mb-4">Buscador de Hoteles</h1>
 
@@ -10,17 +9,25 @@
     <div class="row g-3">
       <div class="col-md-6">
         <label for="destino" class="form-label">Destino</label>
-        <input type="text" class="form-control" id="destino" placeholder="¿A dónde vas?">
+        <select class="form-select" id="destino">
+          <option selected>Selecciona tu destino</option>
+          <option value="paris">París</option>
+          <option value="londres">Londres</option>
+          <option value="nueva-york">Nueva York</option>
+          <option value="tokio">Tokio</option>
+         
+        </select>
       </div>
 
       <div class="col-md-6">
         <label class="form-label">Fechas</label>
         <div class="d-flex">
-          <input type="text" class="form-control me-2" placeholder="Check-in" aria-label="Check-in">
-          <input type="text" class="form-control" placeholder="Check-out" aria-label="Check-out">
+          <input type="date" class="form-control me-2" placeholder="Check-in" aria-label="Check-in">
+          <input type="date" class="form-control" placeholder="Check-out" aria-label="Check-out">
         </div>
       </div>
 
+     
       <div class="col-md-4">
         <label for="habitaciones" class="form-label">Habitaciones</label>
         <select class="form-select" id="habitaciones">
@@ -76,7 +83,7 @@
       <input type="range" class="form-range" min="0" max="1000">
       <div class="d-flex justify-content-between text-muted">
         <span>$0</span>
-        <span>$1000</span>
+        <span>$15,000</span>
       </div>
     </div>
 
@@ -112,7 +119,6 @@
     <button onclick="window.location.href='{{route('rutaResultadoHotel')}}'" class="btn btn-primary w-100" type="button">Buscar Hoteles</button>
   </form>
 </div>
-
 
 
 @endsection
