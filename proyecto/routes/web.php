@@ -14,6 +14,7 @@ Route::get('/generacion-exportacion-reportes', [ControladorVista::class, 'genera
 Route::get('/gestion-tarifa', [ControladorVista::class, 'gestiontarifa'])->name('rutaGestionTarifa');
 Route::get('/politicas-de-cancelacion', [ControladorVista::class, 'politicasDeCancelacion'])->name('rutaPoliticasDeCancelacion');
 Route::get('/recuperacion-contrasena', [ControladorVista::class, 'recuperacionContrasena'])->name('rutaRecuperacionContrasena');
+Route::get('/inicio-sesion', [ControladorVista::class, 'inicioSesion'])->name('rutaInicioSesion'); 
 Route::get('/registro-cliente', [ControladorVista::class, 'registroCliente'])->name('rutaRegistroCliente');
 Route::get('/resultado-hotel', [ControladorVista::class, 'resultadoHotel'])->name('rutaResultadoHotel');
 Route::get('/resultados-vuelos', [ControladorVista::class, 'resultadosVuelos'])->name('rutaResultadosVuelos');

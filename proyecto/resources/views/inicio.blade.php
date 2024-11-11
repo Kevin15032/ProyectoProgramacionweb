@@ -23,7 +23,7 @@
             <h1 class="h3 text-primary">Turista sin Maps</h1>
             <nav>
                 <button onclick="window.location.href='{{ route('rutaRegistroCliente') }}'" class="btn btn-outline-primary me-2">Registrarse</button>
-                <button class="btn btn-primary">Iniciar Sesión</button>
+                <button onclick="window.location.href='{{route('rutaInicioSesion')}}'" class="btn btn-outline-primary me-2">Iniciar Sesión</button>
             </nav>
         </div>
     </header>

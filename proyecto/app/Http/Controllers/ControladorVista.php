@@ -78,6 +78,10 @@ public function recuperacionContrasena()
 {
     return view('recuperacioncontraseña');
 }
+public function inicioSesion()
+{
+    return view('inicio_sesion');
+}
 
 public function registroCliente()
 {
