@@ -41,5 +41,7 @@ Route::post('/procesarTarifahotel', [ControladorVista::class, 'guardarTarifaHote
 
 // registro
 Route::post('/registro', [ControladorVista::class, 'registro']);
+// inicio de sesion
+Route::post('/inicio_sesion', [ControladorVista::class, 'inicio']);
 
 Route::post('/correro',[ControladorVista::class,'correo']);

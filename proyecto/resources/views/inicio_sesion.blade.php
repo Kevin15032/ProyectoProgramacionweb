@@ -27,7 +27,7 @@
         <h5 class="card-title">Inicio de Sesión</h5>
       </div>
       <div class="card-body">
-        <form id="inicioForm" action="/inicio-sesion" method="POST" >
+        <form id="inicioForm" action="/inicio_sesion" method="POST" >
             @csrf
           
           <div class="mb-3">
