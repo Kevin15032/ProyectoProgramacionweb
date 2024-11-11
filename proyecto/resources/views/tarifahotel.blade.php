@@ -15,7 +15,7 @@
 <div class="tab-content" id="tarifaHotel">
     
     <div class="tab-pane fade show active" id="hoteles" role="tabpanel" aria-labelledby="hoteles-tab">
-        <form action="{{ route('guardarTarifaHotel') }}" method="POST" class="row g-3">
+        <form action="/procesarTarifahotel" method="POST" class="row g-3">
             @csrf
             <div class="col-12">
                 <label for="hotel-select" class="form-label">Seleccionar Hotel</label>
@@ -26,6 +26,7 @@
                     <option value="PAR-MARRIOTT">Marriott París</option>
                     <option value="LON-SAVOY">The Savoy Londres</option>
                 </select>
+                <small class="text-danger fst-italic">{{ $errors->first('hotel') }}</small>
             </div>
             <div class="col-12">
                 <label for="precio-hotel" class="form-label">Precio por Noche (€)</label>

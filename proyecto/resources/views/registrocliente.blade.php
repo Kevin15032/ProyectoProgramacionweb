@@ -5,22 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite(['resources/js/app.js'])
   <title>Registro de Clientes</title>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
   <style>
     .border-red { border-color: #dc3545; }
     .text-red { color: #dc3545; }
   </style>
 </head>
 <body>
-    @if (session('exito'))
-    <script> 
-        Swal.fire({
-            title: "Respuesta servidor!",
-            text: "{{ session('exito') }}",
-            icon: "success"
-        });
-    </script>
-@endif
+   
   <div class="container d-flex justify-content-center mt-5">
     <div class="card w-100" style="max-width: 350px;">
       <div class="card-header text-center">
@@ -64,5 +56,15 @@
       </div>
     </div>
   </div>
+  @if (session('exito'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            title: "Respuesta servidor!",
+            text: "{{ session('exito') }}",
+            icon: "success"
+        });
+    </script>
+@endif
 </body>
 </html>
