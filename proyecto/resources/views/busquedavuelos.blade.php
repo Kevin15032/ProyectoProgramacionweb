@@ -1,6 +1,15 @@
 @extends('layouts.navformularios')
 @section('contenido')
-
+@if (session('exito'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            title: "Respuesta servidor!",
+            text: "{{ session('exito') }}",
+            icon: "success"
+        });
+    </script>
+  @endif
 
 <div class="container mt-5">
         <h1 class="mb-4">Buscar Vuelos</h1>

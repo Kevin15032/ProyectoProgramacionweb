@@ -26,7 +26,7 @@
                         <a class="nav-link {{ request()->routeIs('rutaAdmiVuelos') ? 'text-warning' : '' }}" href="{{ route('rutaAdmiVuelos') }}">Vuelos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('rutaAdmiHoteles') ? 'text-warning' : '' }}" href="{{ route('rutaAdmiHoteles') }}">Hoteles</a>
+                        <a class="nav-link {{ request()->routeIs('rutaAdmiHoteles') ? 'text-warning' : '' }}" href="{{ route('crearHotel') }}">Hoteles</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('rutaAdmiDestinos') ? 'text-warning' : '' }}" href="{{ route('rutaAdmiDestinos') }}">Destinos</a>
@@ -36,10 +36,10 @@
                     </li> 
                     <li class="nav-item">
 
-                        <a class="nav-link {{ request()->routeIs('rutaGestionTarifa') ? 'text-warning' : '' }}" href="{{ route('rutaGestionTarifa') }}">Tarifa vuelos</a>
+                        <a class="nav-link {{ request()->routeIs('rutaAdmiVuelos') ? 'text-warning' : '' }}" href="{{ route('rutaAdmiVuelos') }}">Tarifa vuelos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('rutaTarifaHotel') ? 'text-warning' : '' }}" href="{{ route('rutaTarifaHotel') }}">Tarifa Hotel</a>
+                        <a class="nav-link {{ request()->routeIs('gestionarTarifas') ? 'text-warning' : '' }}" href="{{ route('gestionarTarifas') }}">Tarifa Hotel</a>
                     </li>
                         <a class="nav-link {{ request()->routeIs('rutaCorreosAutomaticos') ? 'text-warning' : '' }}" href="{{ route('rutaCorreosAutomaticos') }}">Correos Automáticos</a> 
                     </li> 

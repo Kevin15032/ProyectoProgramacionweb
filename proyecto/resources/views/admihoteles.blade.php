@@ -1,52 +1,53 @@
 @extends('layouts.navadministracion')
+
 @section('contenido')
-<div class="container mt-5">
-    @if (session('exito'))
-    <script>
-        Swal.fire({
-            title: "Respuesta servidor!",
-            text: "{{ session('exito') }}",
-            icon: "success"
-        });
-    </script>
-@endif
-
-    <h2>Registro de Hoteles</h2>
-    <form action="/procesarhotel" method="POST">
+<div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-6">Registrar Hotel</h1>
+    <form method="POST" action="{{ route('storeHotel') }}" enctype="multipart/form-data">
         @csrf
-        <div class="form-group">
-            <label for="nombreHotel">Nombre del Hotel:</label>
-            <input type="text" class="form-control" name="nombreHotel" value="{{ old('nombreHotel') }}" required>
-            <small class="text-danger fst-italic">{{ $errors->first('nombreHotel') }}</small>
+        <div class="form-group mb-4">
+            <label for="nombreHotel" class="font-semibold">Nombre del Hotel</label>
+            <input type="text" name="nombreHotel" id="nombreHotel" class="form-control" placeholder="Ingrese el nombre del hotel" required>
         </div>
-
-        <div class="form-group mt-3">
-            <label for="categoria">Categoría:</label>
-            <select class="form-control" name="categoria">
-                <option value="1">1 estrella</option>
-                <option value="2">2 estrellas</option>
-                <option value="3">3 estrellas</option>
-                <option value="4">4 estrellas</option>
-                <option value="5">5 estrellas</option>
+        <div class="form-group mb-4">
+            <label for="categoria" class="font-semibold">Categoría (Estrellas)</label>
+            <select name="categoria" id="categoria" class="form-control" required>
+                <option value="1">1 Estrella</option>
+                <option value="2">2 Estrellas</option>
+                <option value="3">3 Estrellas</option>
+                <option value="4">4 Estrellas</option>
+                <option value="5">5 Estrellas</option>
             </select>
         </div>
-
-        <div class="form-group mt-3">
-            <label for="ciudad">Ciudad:</label>
-            <input type="text" class="form-control" name="ciudad" value="{{ old('ciudad') }}" required>
-            <small class="text-danger fst-italic">{{ $errors->first('ciudad') }}</small>
+        <div class="form-group mb-4">
+            <label for="ciudad" class="font-semibold">Ciudad</label>
+            <input type="text" name="ciudad" id="ciudad" class="form-control" placeholder="Ingrese la ciudad del hotel" required>
+        </div>
+        <div class="form-group mb-4">
+            <label for="precio" class="font-semibold">Precio por noche</label>
+            <input type="number" name="precio" id="precio" class="form-control" step="0.01" placeholder="Ingrese el precio por noche" required>
         </div>
 
-        <div class="form-group mt-3">
-            <label for="precio">Precio por Noche:</label>
-            <input type="number" class="form-control" name="precio" value="{{ old('precio') }}" required>
-            <small class="text-danger fst-italic">{{ $errors->first('precio') }}</small>
+        <div class="form-group mb-4">
+            <label for="descripcion" class="font-semibold">Descripción</label>
+            <textarea name="descripcion" id="descripcion" class="form-control" placeholder="Ingrese la descripción del hotel" required></textarea>
         </div>
+        
 
-        <button type="submit" class="btn btn-primary mt-3">Guardar Hotel</button>
+        <div class="form-group mb-4">
+            <label for="politicas_cancelacion" class="font-semibold">Políticas de Cancelación</label>
+            <textarea name="politicas_cancelacion" id="politicas_cancelacion" class="form-control" placeholder="Ingrese las políticas de cancelación del hotel" required></textarea>
+        </div>
+       
+        <div class="form-group mb-4">
+            <label for="foto" class="font-semibold">Foto del hotel</label>
+            <input type="file" name="foto" id="foto" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Registrar Hotel</button>
     </form>
+    
+    
 </div>
-
-
-
 @endsection
+
+
