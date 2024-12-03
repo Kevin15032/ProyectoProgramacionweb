@@ -26,17 +26,14 @@ public function busquedaVuelos()
 {
     return view('busquedavuelos');
 }
-
-public function cancelarReserva()
-{
-    return view('cancelarreserva');
-}
-
 public function carritoReservacion()
 {
     return view('carritoreservacion');
 }
-
+public function cancelarReserva()
+{
+    return view('cancelarreserva');
+}
 public function correosAutomaticos()
 {
     return view('correosautomaticos');
