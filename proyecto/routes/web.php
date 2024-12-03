@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorVista;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\VueloController;
 
 // Rutas principales 
 Route::get('/', [ControladorVista::class, 'home'])->name('rutaInicio');
@@ -32,7 +33,21 @@ Route::get('/datalle-hotel', [ControladorVista::class, 'detallesHotel'])->name('
 
 
 // Rutas de administración de vuelos, hoteles y destino 
-Route::get('/admivuelos', [ControladorVista::class, 'admivuelo'])->name('rutaAdmiVuelos');
+// Route::get('/admivuelos', [VueloController::class, 'index'])->name('rutaAdmiVuelos');
+// Route::get('/admivuelos/crear', [VueloController::class, 'create'])->name('crearVueloForm');
+// Route::post('/admivuelos/crear', [VueloController::class, 'store'])->name('crearVuelo');
+// Route::put('/admivuelos/{id}', [VueloController::class, 'update'])->name('actualizarVuelo');
+// Ruta para ver el formulario de registro de vuelo
+Route::get('/admivuelo', [VueloController::class, 'create'])->name('rutaCrearVuelo');
+Route::post('/admivuelo', [VueloController::class, 'store'])->name('storeVuelo');
+
+Route::get('/vuelos', [VueloController::class, 'index'])->name('rutaVuelos');
+Route::get('/vuelos/{id}', [VueloController::class, 'details'])->name('detalle.vuelo');
+
+Route::get('/gestionar-tarifas-vuelos', [VueloController::class, 'gestionarTarifasvuelos'])->name('gestionarTarifasvuelos');
+Route::put('/vuelos/{id}', [VueloController::class, 'updateRate'])->name('actualizarTarifaVuelo');
+Route::get('/adminvuelos', [VueloController::class, 'create'])->name('rutaAdmiVuelos');
+
 
 //Hotel
 Route::get('/admihoteles', [HotelController::class, 'index'])->name('rutaAdmiHoteles'); // Mostrar lista de hoteles
