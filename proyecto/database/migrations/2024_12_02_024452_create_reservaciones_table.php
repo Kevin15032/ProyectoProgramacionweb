@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('reservaciones', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade'); 
+            $table->decimal('precio_total',10,2); 
+            $table->enum('status',['pendiente', 'pagado','cancelar'])->default('pendiente');
             $table->timestamps();
         });
     }
