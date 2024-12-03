@@ -20,7 +20,11 @@ return new class extends Migration
             $table->text('descripcion')->nullable(); 
             $table->string('foto')->nullable(); 
             $table->text('politicas_cancelacion')->nullable(); 
+            $table->json('servicios')->nullable(); 
             $table->boolean('disponibilidad')->default(true); 
+            $table->date('fecha_inicio')->nullable(); 
+            $table->date('fecha_fin')->nullable(); 
+            $table->decimal('distancia_al_centro', 5, 2)->nullable(); 
             $table->timestamps();
         });
     }

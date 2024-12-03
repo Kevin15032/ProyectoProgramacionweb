@@ -27,10 +27,10 @@
                         <a class="nav-link {{ request()->routeIs('rutaBusquedaVuelos') ? 'text-warning' : '' }}" href="{{ route('rutaBusquedaVuelos') }}">Busqueda de vuelos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('rutaBusquedaHotel') ? 'text-warning' : '' }}" href="{{ route('rutaBusquedaHotel') }}">Busqueda de hoteles</a>
+                        <a class="nav-link {{ request()->routeIs('rutaAdmiHoteles') ? 'text-warning' : '' }}" href="{{ route('rutaAdmiHoteles') }}">Busqueda de hoteles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('rutaCarritoReservacion') ? 'text-warning' : '' }}" href="{{ route('rutaCarritoReservacion') }}">Carrito de Reservación</a>
+                        <a class="nav-link {{ request()->routeIs('carritoreservacion') ? 'text-warning' : '' }}" href="{{ route('carritoreservacion') }}">Carrito de Reservación</a>
                     </li>
                 </ul>
             </div>

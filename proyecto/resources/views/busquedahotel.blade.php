@@ -5,119 +5,26 @@
 <div class="container my-5 p-4 bg-white shadow rounded">
   <h1 class="text-center mb-4">Buscador de Hoteles</h1>
 
-  <form action="" method="">
-    <div class="row g-3">
-      <div class="col-md-6">
-        <label for="destino" class="form-label">Destino</label>
-        <select class="form-select" id="destino">
-          <option selected>Selecciona tu destino</option>
-          <option value="paris">París</option>
-          <option value="londres">Londres</option>
-          <option value="nueva-york">Nueva York</option>
-          <option value="tokio">Tokio</option>
-         
-        </select>
-      </div>
-
-      <div class="col-md-6">
-        <label class="form-label">Fechas</label>
-        <div class="d-flex">
-          <input type="date" class="form-control me-2" placeholder="Check-in" aria-label="Check-in">
-          <input type="date" class="form-control" placeholder="Check-out" aria-label="Check-out">
+  <form method="GET" action="{{ route('buscarHotel') }}" class="mb-4">
+    <div class="form-row">
+        <div class="col-md-3 mb-2">
+            <input type="text" name="ciudad" class="form-control" placeholder="Destino (Ciudad)" value="{{ request('ciudad') }}">
         </div>
-      </div>
-
-     
-      <div class="col-md-4">
-        <label for="habitaciones" class="form-label">Habitaciones</label>
-        <select class="form-select" id="habitaciones">
-          <option selected>Selecciona</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </div>
-
-      <div class="col-md-4">
-        <label for="adultos" class="form-label">Adultos</label>
-        <select class="form-select" id="adultos">
-          <option selected>Selecciona</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-      </div>
-
-      <div class="col-md-4">
-        <label for="ninos" class="form-label">Niños</label>
-        <select class="form-select" id="ninos">
-          <option selected>Selecciona</option>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select>
-      </div>
-
-      <div class="col-md-4">
-        <label for="estrellas" class="form-label">Categoría del Hotel</label>
-        <select class="form-select" id="estrellas">
-          <option selected>Selecciona</option>
-          <option value="1">1 estrella</option>
-          <option value="2">2 estrellas</option>
-          <option value="3">3 estrellas</option>
-          <option value="4">4 estrellas</option>
-          <option value="5">5 estrellas</option>
-        </select>
-      </div>
+        <div class="col-md-2 mb-2">
+            <input type="number" name="categoria" class="form-control" placeholder="Estrellas" value="{{ request('categoria') }}">
+        </div>
+        <div class="col-md-2 mb-2">
+            <input type="number" name="precio_min" class="form-control" placeholder="Precio mínimo" value="{{ request('precio_min') }}">
+        </div>
+        <div class="col-md-2 mb-2">
+            <input type="number" name="precio_max" class="form-control" placeholder="Precio máximo" value="{{ request('precio_max') }}">
+        </div>
+        <div class="col-md-3 mb-2">
+            <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </div>
     </div>
+</form>
 
-    <div class="my-4">
-      <label class="form-label">Rango de Precio ($)</label>
-      <input type="range" class="form-range" min="0" max="1000">
-      <div class="d-flex justify-content-between text-muted">
-        <span>$0</span>
-        <span>$15,000</span>
-      </div>
-    </div>
-
-    <div class="my-4">
-      <label class="form-label">Distancia al centro (km)</label>
-      <input type="range" class="form-range" min="0" max="50">
-      <div class="d-flex justify-content-between text-muted">
-        <span>0 km</span>
-        <span>50 km</span>
-      </div>
-    </div>
-
-    <div class="my-4">
-      <label class="form-label">Servicios</label>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="wifi">
-        <label class="form-check-label" for="wifi">WiFi</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="piscina">
-        <label class="form-check-label" for="piscina">Piscina</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="desayuno">
-        <label class="form-check-label" for="desayuno">Desayuno incluido</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="estacionamiento">
-        <label class="form-check-label" for="estacionamiento">Estacionamiento</label>
-      </div>
-    </div>
-
-    <button onclick="window.location.href='{{route('rutaResultadoHotel')}}'" class="btn btn-primary w-100" type="button">Buscar Hoteles</button>
-  </form>
 </div>
 
 

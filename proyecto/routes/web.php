@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorVista;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\ReservaController;
 
 // Rutas principales 
 Route::get('/', [ControladorVista::class, 'home'])->name('rutaInicio');
@@ -40,10 +41,29 @@ Route::get('/admihoteles/crear', [HotelController::class, 'create'])->name('crea
 Route::post('/admihoteles', [HotelController::class, 'store'])->name('storeHotel'); // Guardar nuevo hotel
 Route::get('/admihoteles/{id}', [HotelController::class, 'details'])->name('detalles.hotel'); // Ver detalles de un hotel
 Route::get('/gestionar-tarifas', [HotelController::class, 'gestionarTarifas'])->name('gestionarTarifas');
+// actualizar y eliminar Hotel
+Route::get('/hoteles', [HotelController::class, 'listarHoteles'])->name('listarHoteles');
+Route::get('/hoteles/{id}/editar', [HotelController::class, 'edit'])->name('editar.hotel');
+Route::put('/hoteles/{id}', [HotelController::class, 'update'])->name('actualizar.hotel');
+Route::delete('/hoteles/{id}', [HotelController::class, 'destroy'])->name('eliminar.hotel');
+
+
 // Formulario para modificar tarifas del hotel
 Route::put('/admihoteles/{id}', [HotelController::class, 'updateRate'])->name('actualizarTarifaHotel'); // Actualizar tarifas del hotel
 Route::delete('/admihoteles/{id}', [HotelController::class, 'destroy'])->name('eliminarHotel'); // Eliminar hotel
 Route::post('/guardar-tarifa', [HotelController::class, 'guardarTarifa'])->name('guardarTarifa');
+
+//buscador hotel
+Route::get('/buscar', [HotelController::class, 'buscarHotel'])->name('buscarHotel');
+Route::get('/hoteles', [HotelController::class, 'listarHoteles'])->name('listarHoteles');
+
+// reservacion
+Route::post('/hoteles/{id}/reservar', [HotelController::class, 'reservar'])->name('reservar.hotel');
+Route::get('/carrito/reservaciones', [HotelController::class, 'verReservas'])->name('carrito.reservacion');
+Route::delete('/reservas/{id}/cancelar', [HotelController::class, 'cancelarReserva'])->name('cancelar.reserva');
+Route::get('/carritoreservacion', [HotelController::class, 'mostrarReservas'])->name('carritoreservacion');
+
+
 
 
 
