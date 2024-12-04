@@ -26,7 +26,10 @@
       </form>
             @endif
     </div>
+
 </div>
 @endforeach
 
 @endsection
+
+

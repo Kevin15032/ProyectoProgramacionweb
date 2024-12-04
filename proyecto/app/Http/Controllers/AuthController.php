@@ -35,7 +35,7 @@ class AuthController extends Controller
         Auth::loginUsingId($user);
 
         
-        return redirect()->route('rutaBusquedaVuelos')->with('exito', 'Usuario registrado correctamente.');
+        return redirect()->route('rutaVuelos')->with('exito', 'Usuario registrado correctamente.');
     }
 
     
@@ -51,7 +51,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             
-            return redirect()->route('rutaBusquedaVuelos')->with('exito', 'Inicio de sesión exitoso.');
+            return redirect()->route('rutaVuelos')->with('exito', 'Inicio de sesión exitoso.');
         }
 
         

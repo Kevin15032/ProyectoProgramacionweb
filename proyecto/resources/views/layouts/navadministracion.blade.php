@@ -23,10 +23,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('rutaAdmiVuelos') ? 'text-warning' : '' }}" href="{{ route('rutaAdmiVuelos') }}">Vuelos</a>
+                        <a class="nav-link {{ request()->routeIs('rutaCrearVuelo') ? 'text-warning' : '' }}" href="{{ route('rutaCrearVuelo') }}">Vuelos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('rutaAdmiHoteles') ? 'text-warning' : '' }}" href="{{ route('crearHotel') }}">Hoteles</a>
+                        <a class="nav-link {{ request()->routeIs('crearHotel') ? 'text-warning' : '' }}" href="{{ route('crearHotel') }}">Hoteles</a>
                     </li>
                     
                     <li class="nav-item">
@@ -34,7 +34,7 @@
                     </li> 
                     <li class="nav-item">
 
-                        <a class="nav-link {{ request()->routeIs('rutaAdmiVuelos') ? 'text-warning' : '' }}" href="{{ route('rutaAdmiVuelos') }}">Tarifa vuelos</a>
+                        <a class="nav-link {{ request()->routeIs('gestionarTarifasvuelos') ? 'text-warning' : '' }}" href="{{ route('gestionarTarifasvuelos') }}">Tarifa vuelos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('gestionarTarifas') ? 'text-warning' : '' }}" href="{{ route('gestionarTarifas') }}">Tarifa Hotel</a>

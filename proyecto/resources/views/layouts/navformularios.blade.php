@@ -24,7 +24,7 @@
                 <ul class="navbar-nav ml-auto">
                     
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('rutaBusquedaVuelos') ? 'text-warning' : '' }}" href="{{ route('rutaBusquedaVuelos') }}">Busqueda de vuelos</a>
+                        <a class="nav-link {{ request()->routeIs('rutaVuelos') ? 'text-warning' : '' }}" href="{{ route('rutaVuelos') }}">Busqueda de vuelos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('rutaAdmiHoteles') ? 'text-warning' : '' }}" href="{{ route('rutaAdmiHoteles') }}">Busqueda de hoteles</a>

@@ -1,80 +1,91 @@
 @extends('layouts.navformularios')
+
 @section('contenido')
+<div class="container my-5">
+    <h1 class="display-4 mb-4">Buscador de Vuelos</h1>
 
-  <div class="container my-5">
-    <h1 class="text-center font-weight-bold mb-5">Resultados de Vuelos</h1>
-    
-    <!-- Ordenar por -->
-    <div class="d-flex justify-content-end mb-4">
-      <select class="custom-select w-25" id="ordenarPor">
-        <option selected>Ordenar por</option>
-        <option value="price">Precio</option>
-        <option value="duration">Duración</option>
-        <option value="departureTime">Hora de Salida</option>
-      </select>
+    <form method="GET" action="{{ route('buscarVuelo') }}" class="mb-4">
+        <div class="row">
+            <!-- Origen -->
+            <div class="col-md-3">
+                <label for="ciudad_origen" class="form-label">Ciudad de Origen</label>
+                <input type="text" name="ciudad_origen" id="ciudad_origen" class="form-control" placeholder="Ciudad de origen" value="{{ request('ciudad_origen') }}">
+            </div>
+
+            <!-- Destino -->
+            <div class="col-md-3">
+                <label for="ciudad_destino" class="form-label">Ciudad de Destino</label>
+                <input type="text" name="ciudad_destino" id="ciudad_destino" class="form-control" placeholder="Ciudad de destino" value="{{ request('ciudad_destino') }}">
+            </div>
+
+            <!-- Fecha de Salida -->
+            <div class="col-md-3">
+                <label for="fecha_salida" class="form-label">Fecha de Salida</label>
+                <input type="date" name="fecha_salida" id="fecha_salida" class="form-control" value="{{ request('fecha_salida') }}">
+            </div>
+
+            <!-- Fecha de Regreso -->
+            <div class="col-md-3">
+                <label for="fecha_regreso" class="form-label">Fecha de Regreso</label>
+                <input type="date" name="fecha_regreso" id="fecha_regreso" class="form-control" value="{{ request('fecha_regreso') }}">
+            </div>
+
+            <!-- Precio mínimo -->
+            <div class="col-md-3 mt-3">
+                <label for="precio_min" class="form-label">Precio Mínimo</label>
+                <input type="number" name="precio_min" id="precio_min" class="form-control" placeholder="Precio mínimo" value="{{ request('precio_min') }}">
+            </div>
+
+            <!-- Precio máximo -->
+            <div class="col-md-3 mt-3">
+                <label for="precio_max" class="form-label">Precio Máximo</label>
+                <input type="number" name="precio_max" id="precio_max" class="form-control" placeholder="Precio máximo" value="{{ request('precio_max') }}">
+            </div>
+
+            <!-- Aerolínea -->
+            <div class="col-md-3 mt-3">
+                <label for="aerolinea" class="form-label">Aerolínea</label>
+                <input type="text" name="aerolinea" id="aerolinea" class="form-control" placeholder="Aerolínea" value="{{ request('aerolinea') }}">
+            </div>
+
+            <!-- Escalas -->
+            <div class="col-md-3 mt-3">
+                <label for="escalas" class="form-label">Escalas</label>
+                <select name="escalas" id="escalas" class="form-select">
+                    <option value="">Todas</option>
+                    <option value="0" {{ request('escalas') === '0' ? 'selected' : '' }}>Sin Escalas</option>
+                    <option value="1" {{ request('escalas') === '1' ? 'selected' : '' }}>Con Escalas</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="text-end mt-4">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            <a href="{{ route('buscarVuelo') }}" class="btn btn-secondary">Limpiar</a>
+        </div>
+    </form>
+
+    <!-- Resultados -->
+    <div class="row">
+        @forelse($vuelos as $vuelo)
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Vuelo: {{ $vuelo->numero }}</h5>
+                    <p class="card-text">Origen: {{ $vuelo->ciudad_origen }}</p>
+                    <p class="card-text">Destino: {{ $vuelo->ciudad_destino }}</p>
+                    <p class="card-text">Precio: ${{ $vuelo->precio }}</p>
+                    <a href="{{ route('detalle.vuelo', $vuelo->id) }}" class="btn btn-primary">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+        @empty
+        <div class="col-12">
+            <p class="text-center text-muted">No se encontraron vuelos con los criterios seleccionados.</p>
+        </div>
+        @endforelse
     </div>
-
-    <!-- Tabla de Resultados de Vuelos -->
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Vuelo</th>
-          <th>Aerolínea</th>
-          <th>Horario</th>
-          <th>Duración</th>
-          <th>Precio</th>
-          <th>Escalas</th>
-          <th>Disponibilidad</th>
-          <th>Seleccionar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>IB2742</td>
-          <td>Iberia</td>
-          <td>08:00 <i class="mx-2">→</i> 10:30</td>
-          <td><i class="mr-2">⏰</i> 2h 30m</td>
-          <td><i class="mr-2">$</i>150</td>
-          <td>Directo</td>
-          <td><span class="text-success">Disponible</span></td>
-          <td><button class="btn btn-outline-primary btn-sm">Seleccionar</button></td>
-        </tr>
-        <tr>
-          <td>VY1508</td>
-          <td>Vueling</td>
-          <td>10:15 <i class="mx-2">→</i> 13:00</td>
-          <td><i class="mr-2">⏰</i> 2h 45m</td>
-          <td><i class="mr-2">$</i>120</td>
-          <td>1 escala</td>
-          <td><span class="text-warning">Pocos asientos</span></td>
-          <td><button class="btn btn-outline-primary btn-sm">Seleccionar</button></td>
-        </tr>
-        <tr>
-          <td>FR5253</td>
-          <td>Ryanair</td>
-          <td>14:30 <i class="mx-2">→</i> 16:45</td>
-          <td><i class="mr-2">⏰</i> 2h 15m</td>
-          <td><i class="mr-2">$</i>90</td>
-          <td>Directo</td>
-          <td><span class="text-danger">Agotado</span></td>
-          <td><button class="btn btn-outline-secondary btn-sm" disabled>Seleccionar</button></td>
-        </tr>
-        <tr>
-          <td>LH1806</td>
-          <td>Lufthansa</td>
-          <td>18:00 <i class="mx-2">→</i> 20:45</td>
-          <td><i class="mr-2">⏰</i> 2h 45m</td>
-          <td><i class="mr-2">$</i>180</td>
-          <td>Directo</td>
-          <td><span class="text-success">Disponible</span></td>
-          <td><button class="btn btn-outline-primary btn-sm">Seleccionar</button></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- Botón para Añadir al Carrito -->
-    <div class="d-flex justify-content-end mt-5">
-      <button class="btn btn-primary">Añadir al Carrito (0)</button>
-    </div>
-  </div>
+</div>
 @endsection
+
+

@@ -47,7 +47,7 @@
 
         <div class="text-end mt-3">
             <button type="submit" class="btn btn-primary">Buscar</button>
-            <a href="{{ route('listarHoteles') }}" class="btn btn-secondary">Limpiar</a>
+            <a href="{{ route('buscarHotel') }}" class="btn btn-secondary">Limpiar</a>
         </div>
     </form>
 
